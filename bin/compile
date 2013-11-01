@@ -4,6 +4,8 @@
 # fail fast
 set -e
 
+[ -n "${SCRIPT_DEBUG}" ] && PS4='${0##*/}:$(printf "%03d" $LINENO) $(date +%Y-%m-%dT%H:%M:%S%z)> ' && set -x
+
 
 # Paths.
 BIN_DIR=$(cd $(dirname $0); pwd) # absolute path

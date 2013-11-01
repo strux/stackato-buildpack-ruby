@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # bin/release <build-dir>
 
+[ -n "${SCRIPT_DEBUG}" ] && PS4='${0##*/}:$(printf "%03d" $LINENO) $(date +%Y-%m-%dT%H:%M:%S%z)> ' && set -x
+
 BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
 BUILD_DIR=$1
 NAME=$($BIN_DIR/detect $BUILD_DIR) || exit 1

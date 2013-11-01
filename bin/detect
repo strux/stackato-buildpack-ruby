@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # bin/use <build-dir>
 
+[ -n "${SCRIPT_DEBUG}" ] && PS4='${0##*/}:$(printf "%03d" $LINENO) $(date +%Y-%m-%dT%H:%M:%S%z)> ' && set -x
+
 if [ -f $1/config/environment.rb ]; then
   echo "Ruby/Rails" && exit 0
 else
