@@ -30,15 +30,15 @@ function puts-step (){
   echo "-----> $@"
 }
 
+function precompile_assets {
+    puts-step "Running rake assets:precompile"
+    bundle exec rake RAILS_ENV=production assets:precompile --trace 2>&1 | indent
+}
+
 function bundle_install {
     unset RUBYOPT BUNDLE_BIN_PATH GEM_PATH GEM_HOME BUNDLE_GEMFILE
     puts-step "Installing gem dependencies"
     bundle install --path rubygems 2>&1 | indent
-}
-
-function precompile_assets {
-    puts-step "Running rake assets:precompile"
-    bundle exec rake assets:precompile --trace 2>&1 | indent
 }
 
 function write_database_yml {
