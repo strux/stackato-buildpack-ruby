@@ -36,6 +36,11 @@ function bundle_install {
     bundle install --path rubygems 2>&1 | indent
 }
 
+function precompile_assets {
+    puts-step "Running rake assets:precompile"
+    bundle exec rake assets:precompile --trace 2>&1 | indent
+}
+
 function write_database_yml {
     puts-step "Writing database.yml"
     ruby "$ROOT_DIR/opt/write_database_yml.rb" | indent
@@ -69,6 +74,7 @@ done
 
 
 bundle_install
+precompile_assets
 write_database_yml
 write_boot_config
 db_migrate
